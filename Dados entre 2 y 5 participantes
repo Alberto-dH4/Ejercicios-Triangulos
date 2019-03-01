@@ -1,0 +1,53 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    Random aleatorio = new Random();
+		int jugadores = 0;
+		//Ingreso de datos
+		Console.WriteLine("Ingrese el numero de jugadores(entre 2 y 5)");
+		int n = int.Parse(Console.ReadLine());
+    //validación
+		while (n < 2 || n > 5){
+			Console.WriteLine("ERROR. Minimo 2 jugadores, maximo 5.");
+			n = int.Parse(Console.ReadLine());
+		}
+		Console.WriteLine("Inicio del juego");
+		//Ciclo del juego 
+		while (jugadores < n){
+			Console.WriteLine("\n\nJugador" + (jugadores + 1));
+			int total = 0, dado = 0, contador = 0;
+			while(true){
+				dado = aleatorio.Next(1,7);
+				Console.WriteLine("Dado:" + dado);
+				total += dado;
+				if (dado == 1){
+					contador++;
+				}
+				else{
+					contador = 0;
+					}
+				if (total >= 100){
+					Console.WriteLine("[GANADOR]");
+					break;
+				}
+				else if (contador == 3){
+					Console.WriteLine("[ELIMINADO]");
+					break;
+				}
+				else{
+					Console.WriteLine("Total:" + total);
+					Console.WriteLine("¿Desea continuar (s/n)?");
+          string r = Console.ReadLine();
+          // validación
+					while (r != "s" && r != "n"){
+            Console.WriteLine("ERROR. Responda ´s´ o ´n´");
+            r = Console.ReadLine();
+          }
+          if (r != "s") break;
+				}
+			}
+			jugadores += 1;
+		}
+  }
+}
