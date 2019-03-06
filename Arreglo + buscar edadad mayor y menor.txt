@@ -1,0 +1,36 @@
+Console.WriteLine("Digite el numero de datos");
+        int n = int.Parse(Console.ReadLine());
+
+        int[] edades = new int [n];
+        string[] nombres = new string [n];
+
+        int i = 0, max = 0, min = 100, indice = 0, indicemenor = 0;
+        while (i < n){
+            Console.WriteLine("Ingrese un nombre");
+            nombres[i] = Console.ReadLine();
+
+            Console.WriteLine("Ingrese la edad respectiva");
+            edades [i] = int.Parse(Console.ReadLine());
+
+            i++;
+        }
+        //Buscar al mayor
+        for (int j = 0; j < edades.Length; j++)
+        {
+            if (edades[j] > max)
+            {
+                max = edades[j];
+                indice = j;
+            }
+        }
+        Console.WriteLine("El mayor es: " + nombres[indice] + " con una edad de: " + max);
+        //Buscar el menor
+        for(int u = 0; u < edades.Length; u++)
+            {
+            if (edades[u] < min)
+            {
+                min = edades[u];
+                indicemenor = u;
+            }
+        }
+        Console.WriteLine("El menor es: " + nombres[indicemenor] + " con una edad de: " + min);
